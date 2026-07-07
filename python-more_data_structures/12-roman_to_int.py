@@ -12,4 +12,4 @@ def roman_to_int(roman_string):
         else:
             result += curr
         prev = curr
-    return result 
+    return result
