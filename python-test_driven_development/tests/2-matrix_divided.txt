@@ -6,6 +6,8 @@
 [[1, 2, 3], [4, 5, 6]]
 >>> matrix_divided([[1.5, 2.5]], 2)
 [[0.75, 1.25]]
+>>> matrix_divided([[1, 2], [3, 4]], float('inf'))
+[[0.0, 0.0], [0.0, 0.0]]
 >>> try:
 ...     matrix_divided("not a matrix", 2)
 ... except Exception as e:
@@ -26,3 +28,9 @@ div must be a number
 ... except Exception as e:
 ...     print(e)
 division by zero
+>>> matrix_divided([[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+>>> matrix_divided()
+Traceback (most recent call last):
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
