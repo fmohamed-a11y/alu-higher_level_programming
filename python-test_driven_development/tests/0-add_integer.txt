@@ -17,3 +17,13 @@ b must be an integer
 ... except Exception as e:
 ...     print(e)
 a must be an integer
+>>> try:
+...     add_integer(float('inf'), 0)
+... except Exception as e:
+...     print(e)
+cannot convert float infinity to integer
+>>> try:
+...     add_integer(float('nan'), 0)
+... except Exception as e:
+...     print(e)
+cannot convert float NaN to integer
