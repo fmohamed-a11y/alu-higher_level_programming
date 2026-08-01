@@ -1,1 +1,1 @@
-SQL introduction scripts
+Python almost a circle
