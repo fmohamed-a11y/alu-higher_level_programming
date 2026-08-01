@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This module defines the Base class"""
 import json
+import os
 
 
 class Base:
@@ -29,3 +30,36 @@ class Base:
         if json_string is None or json_string == "[]":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """Saves list of objects to a JSON file"""
+        filename = cls.__name__ + ".json"
+        if list_objs is None:
+            list_objs = []
+        list_dicts = [o.to_dictionary() for o in list_objs]
+        with open(filename, "w") as f:
+            f.write(cls.to_json_string(list_dicts))
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with all attributes set"""
+        from models.rectangle import Rectangle
+        from models.square import Square
+        if cls == Rectangle:
+            dummy = Rectangle(1, 1)
+        else:
+            dummy = Square(1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances from a JSON file"""
+        filename = cls.__name__ + ".json"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r") as f:
+            json_string = f.read()
+        list_dicts = cls.from_json_string(json_string)
+        return [cls.create(**d) for d in list_dicts]
