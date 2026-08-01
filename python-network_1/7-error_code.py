@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Send a request to a URL and display the response body or the error code using requests."""
+"""Send a request and display the body or the HTTP error code."""
 import sys
 import requests
 
