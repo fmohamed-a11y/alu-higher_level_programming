@@ -53,6 +53,21 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square(1, 2, -1)
 
+    def test_size_neg(self):
+        """Tests size negative raises ValueError"""
+        with self.assertRaises(ValueError):
+            Square(-1)
+
+    def test_x_must_be_integer(self):
+        """Tests x must be integer"""
+        with self.assertRaises(TypeError):
+            Square(1, "2")
+
+    def test_y_must_be_integer(self):
+        """Tests y must be integer"""
+        with self.assertRaises(TypeError):
+            Square(1, 2, "3")
+
     def test_area(self):
         """Tests area method"""
         s = Square(3)
