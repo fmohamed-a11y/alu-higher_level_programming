@@ -14,5 +14,5 @@ def text_indentation(text):
         else:
             result += char
 
-    for line in result.split("\n"):
-        print(line.strip())
+    lines = [line.strip() for line in result.split("\n")]
+    print("\n".join(lines), end="")
