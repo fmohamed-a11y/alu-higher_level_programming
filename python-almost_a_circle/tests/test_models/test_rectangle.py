@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unit tests for Rectangle class"""
 import unittest
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -82,6 +83,57 @@ class TestRectangle(unittest.TestCase):
         """Tests __str__ method"""
         r = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(str(r), "[Rectangle] (5) 3/4 - 1/2")
+
+    def test_rectangle_neg_width(self):
+        """Tests Rectangle(-1, 2)"""
+        with self.assertRaises(ValueError):
+            Rectangle(-1, 2)
+
+    def test_rectangle_neg_height(self):
+        """Tests Rectangle(1, -2)"""
+        with self.assertRaises(ValueError):
+            Rectangle(1, -2)
+
+    def test_create_id(self):
+        """Tests Rectangle.create with id"""
+        r = Rectangle.create(**{'id': 89})
+        self.assertEqual(r.id, 89)
+
+    def test_create_id_width(self):
+        """Tests Rectangle.create with id and width"""
+        r = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2})
+        self.assertEqual(r.width, 1)
+
+    def test_save_to_file_none(self):
+        """Tests Rectangle.save_to_file with None"""
+        Rectangle.save_to_file(None)
+
+    def test_save_to_file_empty(self):
+        """Tests Rectangle.save_to_file with empty list"""
+        Rectangle.save_to_file([])
+
+    def test_save_to_file_list(self):
+        """Tests Rectangle.save_to_file with a Rectangle"""
+        Rectangle.save_to_file([Rectangle(1, 2)])
+
+    def test_load_from_file_no_file(self):
+        """Tests Rectangle.load_from_file when file doesnt exist"""
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+        result = Rectangle.load_from_file()
+        self.assertEqual(result, [])
+
+    def test_load_from_file_exists(self):
+        """Tests Rectangle.load_from_file when file exists"""
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        result = Rectangle.load_from_file()
+        self.assertIsInstance(result, list)
+
+    def test_to_dictionary(self):
+        """Tests to_dictionary method"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        d = r.to_dictionary()
+        self.assertEqual(d, {'id': 5, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
 
 if __name__ == '__main__':

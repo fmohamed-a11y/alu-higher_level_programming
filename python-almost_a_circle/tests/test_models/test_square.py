@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unit tests for Square class"""
 import unittest
+import os
 from models.base import Base
 from models.square import Square
 
@@ -85,6 +86,51 @@ class TestSquare(unittest.TestCase):
         s = Square(1, 2, 3, 4)
         d = s.to_dictionary()
         self.assertEqual(d, {'id': 4, 'size': 1, 'x': 2, 'y': 3})
+
+    def test_create_id(self):
+        """Tests Square.create with id"""
+        s = Square.create(**{'id': 89})
+        self.assertEqual(s.id, 89)
+
+    def test_create_id_size(self):
+        """Tests Square.create with id and size"""
+        s = Square.create(**{'id': 89, 'size': 1})
+        self.assertEqual(s.size, 1)
+
+    def test_create_id_size_x(self):
+        """Tests Square.create with id, size and x"""
+        s = Square.create(**{'id': 89, 'size': 1, 'x': 2})
+        self.assertEqual(s.x, 2)
+
+    def test_create_id_size_x_y(self):
+        """Tests Square.create with id, size, x and y"""
+        s = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        self.assertEqual(s.y, 3)
+
+    def test_save_to_file_none(self):
+        """Tests Square.save_to_file with None"""
+        Square.save_to_file(None)
+
+    def test_save_to_file_empty(self):
+        """Tests Square.save_to_file with empty list"""
+        Square.save_to_file([])
+
+    def test_save_to_file_list(self):
+        """Tests Square.save_to_file with a Square"""
+        Square.save_to_file([Square(1)])
+
+    def test_load_from_file_no_file(self):
+        """Tests Square.load_from_file when file doesnt exist"""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+        result = Square.load_from_file()
+        self.assertEqual(result, [])
+
+    def test_load_from_file_exists(self):
+        """Tests Square.load_from_file when file exists"""
+        Square.save_to_file([Square(1)])
+        result = Square.load_from_file()
+        self.assertIsInstance(result, list)
 
 
 if __name__ == '__main__':
