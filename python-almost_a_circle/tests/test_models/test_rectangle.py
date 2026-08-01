@@ -105,15 +105,15 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r.width, 1)
 
     def test_save_to_file_none(self):
-        """Tests Rectangle.save_to_file with None"""
+        """Tests Rectangle.save_to_file(None)"""
         Rectangle.save_to_file(None)
 
     def test_save_to_file_empty(self):
-        """Tests Rectangle.save_to_file with empty list"""
+        """Tests Rectangle.save_to_file([])"""
         Rectangle.save_to_file([])
 
     def test_save_to_file_list(self):
-        """Tests Rectangle.save_to_file with a Rectangle"""
+        """Tests Rectangle.save_to_file([Rectangle(1, 2)])"""
         Rectangle.save_to_file([Rectangle(1, 2)])
 
     def test_load_from_file_no_file(self):
@@ -130,44 +130,44 @@ class TestRectangle(unittest.TestCase):
         self.assertIsInstance(result, list)
 
     def test_display_no_x_no_y(self):
-        """Tests display without x and y"""
+        """Tests display() without x and y"""
         r = Rectangle(2, 3)
         r.display()
 
     def test_display_no_y(self):
-        """Tests display without y"""
+        """Tests display() without y"""
         r = Rectangle(2, 3, 1)
         r.display()
 
     def test_display(self):
-        """Tests display with x and y"""
+        """Tests display()"""
         r = Rectangle(2, 3, 1, 1)
         r.display()
 
     def test_save_to_file_None(self):
-        """Alias: save_to_file with None"""
+        """Tests Rectangle.save_to_file(None)"""
         Rectangle.save_to_file(None)
 
     def test_save_to_file_empty_list(self):
-        """Alias: save_to_file with empty list"""
+        """Tests Rectangle.save_to_file([])"""
         Rectangle.save_to_file([])
 
     def test_save_to_file_with_list(self):
-        """Alias: save_to_file with a Rectangle list"""
+        """Tests Rectangle.save_to_file([Rectangle(1, 2)])"""
         Rectangle.save_to_file([Rectangle(1, 2)])
 
     def test_display_without_x_and_y(self):
-        """Alias: display without x and y"""
+        """Tests display() without x and y"""
         r = Rectangle(2, 3)
         r.display()
 
     def test_display_without_y(self):
-        """Alias: display without y"""
+        """Tests display() without y"""
         r = Rectangle(2, 3, 1)
         r.display()
 
     def test_display_basic(self):
-        """Alias: display exists"""
+        """Tests display()"""
         r = Rectangle(2, 3, 1, 1)
         r.display()
 

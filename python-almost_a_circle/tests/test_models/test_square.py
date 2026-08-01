@@ -123,27 +123,27 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.y, 3)
 
     def test_save_to_file_none(self):
-        """Tests Square.save_to_file with None"""
+        """Tests Square.save_to_file(None)"""
         Square.save_to_file(None)
 
     def test_save_to_file_empty(self):
-        """Tests Square.save_to_file with empty list"""
+        """Tests Square.save_to_file([])"""
         Square.save_to_file([])
 
     def test_save_to_file_list(self):
-        """Tests Square.save_to_file with a Square"""
+        """Tests Square.save_to_file([Square(1)])"""
         Square.save_to_file([Square(1)])
 
     def test_save_to_file_None(self):
-        """Alias: save_to_file with None"""
+        """Tests Square.save_to_file(None)"""
         Square.save_to_file(None)
 
     def test_save_to_file_empty_list(self):
-        """Alias: save_to_file with empty list"""
+        """Tests Square.save_to_file([])"""
         Square.save_to_file([])
 
     def test_save_to_file_with_list(self):
-        """Alias: save_to_file with a Square list"""
+        """Tests Square.save_to_file([Square(1)])"""
         Square.save_to_file([Square(1)])
 
     def test_load_from_file_no_file(self):
