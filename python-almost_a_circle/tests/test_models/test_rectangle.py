@@ -129,6 +129,21 @@ class TestRectangle(unittest.TestCase):
         result = Rectangle.load_from_file()
         self.assertIsInstance(result, list)
 
+    def test_display_no_x_no_y(self):
+        """Tests display without x and y"""
+        r = Rectangle(2, 3)
+        r.display()
+
+    def test_display_no_y(self):
+        """Tests display without y"""
+        r = Rectangle(2, 3, 1)
+        r.display()
+
+    def test_display(self):
+        """Tests display with x and y"""
+        r = Rectangle(2, 3, 1, 1)
+        r.display()
+
     def test_to_dictionary(self):
         """Tests to_dictionary method"""
         r = Rectangle(1, 2, 3, 4, 5)
