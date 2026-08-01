@@ -83,7 +83,7 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Print the Rectangle instance using the # character, with x/y offset"""
+        """Print the Rectangle using #, accounting for x/y offset"""
         print("\n" * self.y, end="")
         for i in range(self.height):
             print(" " * self.x + "#" * self.width)
