@@ -134,6 +134,18 @@ class TestSquare(unittest.TestCase):
         """Tests Square.save_to_file with a Square"""
         Square.save_to_file([Square(1)])
 
+    def test_save_to_file_None(self):
+        """Alias: save_to_file with None"""
+        Square.save_to_file(None)
+
+    def test_save_to_file_empty_list(self):
+        """Alias: save_to_file with empty list"""
+        Square.save_to_file([])
+
+    def test_save_to_file_with_list(self):
+        """Alias: save_to_file with a Square list"""
+        Square.save_to_file([Square(1)])
+
     def test_load_from_file_no_file(self):
         """Tests Square.load_from_file when file doesnt exist"""
         if os.path.exists("Square.json"):

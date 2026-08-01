@@ -144,6 +144,33 @@ class TestRectangle(unittest.TestCase):
         r = Rectangle(2, 3, 1, 1)
         r.display()
 
+    def test_save_to_file_None(self):
+        """Alias: save_to_file with None"""
+        Rectangle.save_to_file(None)
+
+    def test_save_to_file_empty_list(self):
+        """Alias: save_to_file with empty list"""
+        Rectangle.save_to_file([])
+
+    def test_save_to_file_with_list(self):
+        """Alias: save_to_file with a Rectangle list"""
+        Rectangle.save_to_file([Rectangle(1, 2)])
+
+    def test_display_without_x_and_y(self):
+        """Alias: display without x and y"""
+        r = Rectangle(2, 3)
+        r.display()
+
+    def test_display_without_y(self):
+        """Alias: display without y"""
+        r = Rectangle(2, 3, 1)
+        r.display()
+
+    def test_display_basic(self):
+        """Alias: display exists"""
+        r = Rectangle(2, 3, 1, 1)
+        r.display()
+
     def test_to_dictionary(self):
         """Tests to_dictionary method"""
         r = Rectangle(1, 2, 3, 4, 5)
