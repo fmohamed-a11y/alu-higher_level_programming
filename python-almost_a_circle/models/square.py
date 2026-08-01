@@ -32,3 +32,24 @@ class Square(Rectangle):
         """Set the size, assigning both width and height"""
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """Update attributes via args (in order: id, size, x, y)
+        or via kwargs if args is empty
+        """
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for attr, value in zip(attrs, args):
+                setattr(self, attr, value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the Square"""
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }
