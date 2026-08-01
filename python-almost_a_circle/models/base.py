@@ -36,3 +36,21 @@ class Base:
 
         with open(filename, "w", encoding="utf-8") as file:
             file.write(cls.to_json_string(list_dicts))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Return the list represented by a JSON string."""
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return an instance with all attributes already set."""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        else:
+            dummy = cls(1)
+
+        dummy.update(**dictionary)
+        return dummy
