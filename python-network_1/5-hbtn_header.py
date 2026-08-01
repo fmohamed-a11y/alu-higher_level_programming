@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Send a request to a URL and display the X-Request-Id header value using requests."""
+"""Send a request and display the X-Request-Id header value."""
 import sys
 import requests
 
